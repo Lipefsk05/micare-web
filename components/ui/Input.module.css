@@ -1,0 +1,17 @@
+.field { display: flex; flex-direction: column; gap: 6px; }
+.label { font-size: 0.82rem; font-weight: 500; color: var(--purple-dark); letter-spacing: 0.03em; text-transform: uppercase; }
+.input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--pink-border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--text-body);
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+.input:focus { border-color: var(--purple-mid); box-shadow: 0 0 0 3px rgba(155, 77, 171, 0.1); }
+.input::placeholder { color: var(--text-muted); }
+.error .input { border-color: #dc2626; }
+.errorMsg { font-size: 0.78rem; color: #dc2626; }

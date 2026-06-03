@@ -1,0 +1,9 @@
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--pink-mid);
+  padding: 24px;
+}
+.card.hoverable { transition: box-shadow 0.2s, transform 0.2s; }
+.card.hoverable:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }

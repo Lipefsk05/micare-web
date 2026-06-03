@@ -1,0 +1,37 @@
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.title { font-size: 2.2rem; color: var(--purple-dark); }
+.subtitle { color: var(--text-muted); font-size: 0.9rem; margin-top: 2px; }
+
+.toolbar { display: flex; gap: 12px; margin-bottom: 24px; }
+.searchInput {
+  flex: 1; padding: 10px 16px;
+  border: 1.5px solid var(--pink-border); border-radius: var(--radius-md);
+  background: var(--white); font-size: 0.9rem; color: var(--text-body);
+  outline: none; transition: border-color 0.2s;
+}
+.searchInput:focus { border-color: var(--purple-mid); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--pink-mid); padding: 20px 24px;
+  transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.cardTop { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-light), var(--purple-mid));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; font-weight: 600;
+}
+.code {
+  background: var(--pink-light); color: var(--purple-mid);
+  border-radius: 100px; padding: 4px 10px; font-size: 0.75rem; font-weight: 500;
+}
+.name { font-size: 1.1rem; font-weight: 500; color: var(--purple-dark); margin-bottom: 4px; }
+.info { font-size: 0.82rem; color: var(--text-muted); }
+
+.empty { text-align: center; padding: 64px; color: var(--text-muted); }
+.emptyIcon { font-size: 3rem; margin-bottom: 16px; }
+.emptyText { font-size: 1rem; margin-bottom: 20px; }

@@ -1,0 +1,21 @@
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(74,21,80,0.4); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px;
+}
+.modal {
+  background: var(--white); border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg); padding: 36px;
+  width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto;
+  animation: slideUp 0.25s ease;
+}
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+.title { font-size: 1.8rem; color: var(--purple-dark); }
+.close { background: none; border: none; font-size: 1.4rem; color: var(--text-muted); }
+.close:hover { color: var(--purple-dark); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.full { grid-column: 1 / -1; }
+.actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+.error { color: #dc2626; font-size: 0.85rem; margin-bottom: 8px; }
+@keyframes slideUp { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }

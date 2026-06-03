@@ -1,0 +1,6 @@
+.wrapper { display: flex; min-height: 100vh; }
+.main { flex: 1; overflow-y: auto; }
+.content { padding: 40px; max-width: 1200px; }
+.pageHeader { margin-bottom: 32px; }
+.pageTitle { font-size: 2.2rem; color: var(--purple-dark); }
+.pageDesc { color: var(--text-muted); margin-top: 4px; font-size: 0.95rem; }

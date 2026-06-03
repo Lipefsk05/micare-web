@@ -1,0 +1,86 @@
+.page { min-height: 100vh; background: linear-gradient(160deg, #fdf3f8 0%, #fae6f3 60%, #f0c8e0 100%); padding: 40px 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+
+.topBar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.logo { font-size: 1.6rem; color: var(--purple-dark); font-family: 'Cormorant Garamond', serif; }
+.backLink { font-size: 0.85rem; color: var(--text-muted); transition: color 0.15s; }
+.backLink:hover { color: var(--purple-dark); }
+
+.patientHeader {
+  background: var(--white); border-radius: var(--radius-xl);
+  border: 1px solid var(--pink-mid); box-shadow: var(--shadow-md);
+  padding: 32px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 24px;
+}
+.avatar {
+  width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--purple-light), var(--purple-mid));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.8rem; font-family: 'Cormorant Garamond', serif;
+}
+.patientName { font-size: 2rem; color: var(--purple-dark); }
+.patientMeta { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
+.badge {
+  margin-top: 8px; display: inline-block;
+  background: var(--pink-light); color: var(--purple-mid);
+  border: 1px solid var(--pink-border); border-radius: 100px;
+  padding: 4px 14px; font-size: 0.78rem; font-weight: 500;
+}
+
+.card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--pink-mid); box-shadow: var(--shadow-sm);
+  overflow: hidden; margin-bottom: 20px;
+}
+.cardHeader {
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
+  color: white; padding: 18px 28px;
+}
+.cardTitle { font-size: 1.3rem; font-family: 'Cormorant Garamond', serif; }
+.cardBody { padding: 28px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+.field { }
+.fieldLabel { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 2px; }
+.fieldValue { font-size: 0.95rem; color: var(--text-body); font-weight: 500; }
+.fieldEmpty { color: var(--text-muted); font-style: italic; font-weight: 400; }
+
+.obsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.obsItem { text-align: center; background: var(--pink-bg); border-radius: var(--radius-md); padding: 14px 8px; }
+.obsNum { font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: var(--purple-dark); font-weight: 600; }
+.obsLabel { font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); }
+
+.textGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.textBlock { background: var(--pink-bg); border-radius: var(--radius-md); padding: 14px 16px; font-size: 0.88rem; color: var(--text-body); white-space: pre-wrap; min-height: 60px; }
+.textEmpty { color: var(--text-muted); font-style: italic; }
+
+.sectionTitle {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--purple-mid); font-weight: 600; margin-bottom: 16px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--pink-light);
+}
+
+.examTable { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.examTable th { background: var(--pink-bg); color: var(--purple-dark); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--pink-mid); }
+.examTable td { padding: 8px 12px; border-bottom: 1px solid var(--pink-light); }
+.examTable tr:last-child td { border-bottom: none; }
+.examName { font-weight: 500; color: var(--purple-dark); }
+.examEmpty { color: var(--text-muted); font-style: italic; }
+
+.consultTable { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.consultTable th { background: var(--pink-bg); color: var(--purple-dark); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--pink-mid); }
+.consultTable td { padding: 8px 10px; border-bottom: 1px solid var(--pink-light); vertical-align: top; }
+.consultTable tr:last-child td { border-bottom: none; }
+.consultNum { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--purple-light); color: white; font-size: 0.75rem; font-weight: 600; }
+
+.notFound { text-align: center; padding: 80px 20px; }
+.notFoundIcon { font-size: 3rem; margin-bottom: 16px; }
+.notFoundTitle { font-size: 1.8rem; color: var(--purple-dark); margin-bottom: 8px; }
+.notFoundDesc { color: var(--text-muted); margin-bottom: 24px; }
+
+.section { margin-bottom: 24px; }
+
+@media (max-width: 600px) {
+  .textGrid { grid-template-columns: 1fr; }
+  .obsGrid { grid-template-columns: repeat(2,1fr); }
+}
