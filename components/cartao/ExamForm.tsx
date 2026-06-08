@@ -20,6 +20,7 @@ type ExamRow = {
 
 export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
   const [loading, setLoading] = useState(false)
+  const [applyDate, setApplyDate] = useState('')
 
   const initial: Record<string, ExamRow> = {}
   EXAM_TYPES.forEach((type) => {
@@ -61,12 +62,28 @@ export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
     }
   }
 
+  function applyToAllDates() {
+    if (!applyDate) return
+    const updated: Record<string, ExamRow> = {}
+    Object.keys(rows).forEach((type) => {
+      const r = rows[type]
+      updated[type] = { ...r, date1: applyDate, date2: applyDate, date3: applyDate }
+    })
+    setRows(updated)
+  }
+
   return (
     <div className={styles.overlay} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className={styles.modal}>
         <div className={styles.header}>
           <h2 className={styles.title}>Exames laboratoriais</h2>
           <button className={styles.close} onClick={onClose}>✕</button>
+        </div>
+
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
+          <label style={{ fontSize: '0.9rem', color: 'var(--purple-dark)' }}>Aplicar data em todos os exames</label>
+          <input type="date" className={styles.input} value={applyDate} onChange={(e) => setApplyDate(e.target.value)} />
+          <button type="button" className={styles.applyButton ?? ''} onClick={applyToAllDates} style={{ padding: '6px 10px', borderRadius: 6 }}>Aplicar</button>
         </div>
 
         <table className={styles.table}>

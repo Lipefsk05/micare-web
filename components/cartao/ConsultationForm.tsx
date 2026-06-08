@@ -20,7 +20,7 @@ export function ConsultationForm({ cardId, consultation, nextNumber, onClose, on
   const [form, setForm] = useState({
     consultNumber: nextNumber ?? 1,
     date: '', complaint: '', ss: '', weight: '',
-    pa: '', ai: '', touch: '', signature: '', returnDate: '',
+    pa: '', ai: '', touch: '', signature: '', returnDate: '', conduta: '',
   })
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export function ConsultationForm({ cardId, consultation, nextNumber, onClose, on
         touch: consultation.touch ?? '',
         signature: consultation.signature ?? '',
         returnDate: consultation.returnDate?.split('T')[0] ?? '',
+        conduta: consultation.conduta ?? '',
       })
     }
   }, [consultation])
@@ -58,7 +59,8 @@ export function ConsultationForm({ cardId, consultation, nextNumber, onClose, on
         ai: form.ai || undefined,
         touch: form.touch || undefined,
         signature: form.signature || undefined,
-        returnDate: form.returnDate || undefined,
+          returnDate: form.returnDate || undefined,
+          conduta: form.conduta || undefined,
       })
       onSave()
     } catch (err: unknown) {
@@ -95,6 +97,16 @@ export function ConsultationForm({ cardId, consultation, nextNumber, onClose, on
             <div className={styles.full}>
               <Input label="Assinatura" value={form.signature} onChange={(e) => set('signature', e.target.value)} />
             </div>
+          </div>
+
+          <div className={styles.full} style={{ marginTop: 10 }}>
+            <label style={{ fontSize: '0.82rem', fontWeight: 500, color: 'var(--purple-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>Conduta</label>
+            <textarea
+              className={styles.textarea}
+              style={{ marginTop: '6px' }}
+              value={form.conduta}
+              onChange={(e) => set('conduta', e.target.value)}
+            />
           </div>
 
           <div className={styles.actions}>

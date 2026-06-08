@@ -56,12 +56,21 @@ export function CardView({ card, onRefresh }: CardViewProps) {
             <div className={styles.sectionTitle}>Dados obstétricos</div>
             <div className={styles.grid}>
               {[
-                { label: 'PNRH', value: card.pnrh },
                 { label: 'PNAR POR', value: card.pnarPor },
                 { label: 'DUM', value: fmt(card.dum) },
                 { label: 'DPP', value: fmt(card.dpp) },
                 { label: '1ª USG', value: fmt(card.firstUsg) },
-                { label: 'IG (semanas)', value: card.igWeeks },
+                { label: 'IG', value: (function() {
+                  if (card.dum) {
+                    const d = new Date(card.dum)
+                    const today = new Date()
+                    const diff = Math.floor((today.getTime() - d.getTime()) / (1000 * 60 * 60 * 24))
+                    const weeks = Math.floor(diff / 7)
+                    const days = diff % 7
+                    return `${weeks} semanas ${days} dias`
+                  }
+                  return card.igWeeks ?? '—'
+                })() },
               ].map(({ label, value }) => (
                 <div key={label} className={styles.field}>
                   <div className={styles.fieldLabel}>{label}</div>
@@ -160,7 +169,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
               <thead>
                 <tr>
                   <th>#</th><th>Data</th><th>Queixa</th><th>SS</th>
-                  <th>Peso</th><th>PA</th><th>AI</th><th>Toque</th><th>Retorno</th><th></th>
+                  <th>Peso</th><th>PA</th><th>AI</th><th>Toque</th><th>Retorno</th><th>Conduta</th><th></th>
                 </tr>
               </thead>
               <tbody>
@@ -175,6 +184,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
                     <td>{c.ai || '—'}</td>
                     <td>{c.touch || '—'}</td>
                     <td>{fmt(c.returnDate)}</td>
+                    <td>{c.conduta || '—'}</td>
                     <td>
                       <button className={styles.editBtn} onClick={() => setEditConsult(c)}>Editar</button>
                     </td>

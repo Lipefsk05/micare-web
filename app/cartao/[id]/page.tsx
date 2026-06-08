@@ -34,11 +34,12 @@ export default function CartaoPublicoPage() {
   useEffect(() => {
     async function load() {
       try {
-        const { data: p } = await api.get(`/api/patients/${id}`)
+        // Public endpoint: search by accessCode (id param is the access code in public URL)
+        const { data: p } = await api.get(`/api/patients/search?accessCode=${encodeURIComponent(id)}`)
         setPatient(p)
-        const { data: cards } = await api.get(`/api/patients/${id}/cards`)
+        const cards = p.prenatalCards ?? []
         setCard(cards[0] ?? null)
-      } catch {
+      } catch (err) {
         setNotFound(true)
       } finally {
         setLoading(false)
@@ -120,12 +121,21 @@ export default function CartaoPublicoPage() {
                 <div className={styles.section}>
                   <div className={styles.sectionTitle}>Dados obstétricos</div>
                   <div className={styles.grid}>
-                    <Field label="PNRH" value={card.pnrh} />
                     <Field label="PNAR POR" value={card.pnarPor} />
                     <Field label="DUM" value={fmt(card.dum)} />
                     <Field label="DPP" value={fmt(card.dpp)} />
                     <Field label="1ª USG" value={fmt(card.firstUsg)} />
-                    <Field label="IG (semanas)" value={card.igWeeks} />
+                    <Field label="IG" value={(function() {
+                      if (card?.dum) {
+                        const d = new Date(card.dum)
+                        const today = new Date()
+                        const diff = Math.floor((today.getTime() - d.getTime()) / (1000 * 60 * 60 * 24))
+                        const weeks = Math.floor(diff / 7)
+                        const days = diff % 7
+                        return `${weeks} semanas ${days} dias`
+                      }
+                      return card?.igWeeks ?? '—'
+                    })()} />
                   </div>
                 </div>
 
@@ -216,7 +226,7 @@ export default function CartaoPublicoPage() {
                     <thead>
                       <tr>
                         <th>#</th><th>Data</th><th>Queixa</th><th>SS</th>
-                        <th>Peso</th><th>PA</th><th>AI</th><th>Toque</th><th>Retorno</th>
+                        <th>Peso</th><th>PA</th><th>AI</th><th>Toque</th><th>Retorno</th><th>Conduta</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -231,6 +241,7 @@ export default function CartaoPublicoPage() {
                           <td>{c.ai || '—'}</td>
                           <td>{c.touch || '—'}</td>
                           <td>{fmt(c.returnDate)}</td>
+                          <td>{c.conduta || '—'}</td>
                         </tr>
                       ))}
                     </tbody>

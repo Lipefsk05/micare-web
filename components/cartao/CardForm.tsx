@@ -17,15 +17,15 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
-    pnrh: '', pnarPor: '', dum: '', dpp: '', firstUsg: '', igWeeks: '',
+    pnarPor: '', dum: '', dpp: '', firstUsg: '', igWeeks: '',
     gestacoes: '', partosCesareos: '', partosNormais: '', abortos: '',
     hpp: '', hgo: '', hs: '', hf: '',
   })
+  const [igDisplay, setIgDisplay] = useState('')
 
   useEffect(() => {
     if (card) {
       setForm({
-        pnrh: card.pnrh ?? '',
         pnarPor: card.pnarPor ?? '',
         dum: card.dum?.split('T')[0] ?? '',
         dpp: card.dpp?.split('T')[0] ?? '',
@@ -40,8 +40,33 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
         hs: card.hs ?? '',
         hf: card.hf ?? '',
       })
+      if (card.dum) {
+        const d = new Date(card.dum)
+        const today = new Date()
+        const diff = Math.floor((today.getTime() - d.getTime()) / (1000 * 60 * 60 * 24))
+        const weeks = Math.floor(diff / 7)
+        const days = diff % 7
+        setIgDisplay(`${weeks} semanas ${days} dias`)
+      }
     }
   }, [card])
+
+  useEffect(() => {
+    if (form.dum) {
+      const d = new Date(form.dum)
+      const dppDate = new Date(d.getTime() + 280 * 24 * 60 * 60 * 1000)
+      const isoDpp = dppDate.toISOString().slice(0, 10)
+      const today = new Date()
+      const diff = Math.floor((today.getTime() - d.getTime()) / (1000 * 60 * 60 * 24))
+      const weeks = Math.floor(diff / 7)
+      const days = diff % 7
+      set('dpp', isoDpp)
+      set('igWeeks', weeks.toString())
+      setIgDisplay(`${weeks} semanas ${days} dias`)
+    } else {
+      setIgDisplay('')
+    }
+  }, [form.dum])
 
   function set(field: string, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }))
@@ -53,7 +78,6 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
     try {
       const payload = {
         patientId,
-        pnrh: form.pnrh || undefined,
         pnarPor: form.pnarPor || undefined,
         dum: form.dum || undefined,
         dpp: form.dpp || undefined,
@@ -96,12 +120,22 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
           <div className={styles.section}>
             <div className={styles.sectionTitle}>Dados obstétricos</div>
             <div className={styles.grid}>
-              <Input label="PNRH" value={form.pnrh} onChange={(e) => set('pnrh', e.target.value)} />
-              <Input label="PNAR POR" value={form.pnarPor} onChange={(e) => set('pnarPor', e.target.value)} />
+              <div className={styles.full}>
+                <label style={{ fontSize: '0.82rem', fontWeight: 500, color: 'var(--purple-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>PNAR — Procedência</label>
+                <textarea
+                  className={styles.textarea}
+                  style={{ marginTop: '6px' }}
+                  value={form.pnarPor}
+                  onChange={(e) => set('pnarPor', e.target.value)}
+                />
+              </div>
               <Input label="DUM" type="date" value={form.dum} onChange={(e) => set('dum', e.target.value)} />
               <Input label="DPP" type="date" value={form.dpp} onChange={(e) => set('dpp', e.target.value)} />
               <Input label="1ª USG" type="date" value={form.firstUsg} onChange={(e) => set('firstUsg', e.target.value)} />
-              <Input label="IG (semanas)" type="number" value={form.igWeeks} onChange={(e) => set('igWeeks', e.target.value)} />
+              <div>
+                <Input label="IG (semanas)" type="number" value={form.igWeeks} readOnly />
+                {igDisplay && <div style={{ fontSize: '0.9rem', color: 'var(--gray)', marginTop: '6px' }}>{igDisplay}</div>}
+              </div>
             </div>
           </div>
 

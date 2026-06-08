@@ -22,8 +22,8 @@ export interface PrenatalCard {
   id: string
   patientId: string
   doctorId: string
-  pnrh?: string
   pnarPor?: string
+  
   dum?: string
   dpp?: string
   firstUsg?: string
@@ -66,6 +66,7 @@ export interface Consultation {
   touch?: string
   signature?: string
   returnDate?: string
+  conduta?: string
 }
 
 export const EXAM_LABELS: Record<string, string> = {
