@@ -14,7 +14,10 @@
 }
 .cardTitle { font-size: 1.4rem; }
 .cardDoctor { font-size: 0.82rem; opacity: 0.8; margin-top: 2px; }
-.cardBody { padding: 28px; }
+.cardCreated { font-size: 0.82rem; opacity: 0.8; }
+.clinicalGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fieldLabelWithMargin { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 6px; }
+.emptyState { color: var(--text-muted); font-style: italic; }
 
 .section { margin-bottom: 28px; }
 .sectionTitle {

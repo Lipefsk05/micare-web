@@ -45,7 +45,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
             <div className={styles.cardTitle}>♥ Cartão Pré Natal</div>
             {card.doctor && <div className={styles.cardDoctor}>Dra. {card.doctor.name} · CRM {card.doctor.crm}</div>}
           </div>
-          <div style={{ fontSize: '0.82rem', opacity: 0.8 }}>
+          <div className={styles.cardCreated}>
             Criado em {fmt(card.createdAt)}
           </div>
         </div>
@@ -101,7 +101,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
           {/* Histórias clínicas */}
           <div className={styles.section}>
             <div className={styles.sectionTitle}>Histórias clínicas</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className={styles.clinicalGrid}>
               {[
                 { label: 'HPP', value: card.hpp },
                 { label: 'HGO', value: card.hgo },
@@ -109,7 +109,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
                 { label: 'HF', value: card.hf },
               ].map(({ label, value }) => (
                 <div key={label}>
-                  <div className={styles.fieldLabel} style={{ marginBottom: '6px' }}>{label}</div>
+                  <div className={styles.fieldLabelWithMargin}>{label}</div>
                   <div className={`${styles.textBlock} ${!value ? styles.textEmpty : ''}`}>
                     {value || 'Não informado'}
                   </div>
@@ -127,7 +127,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
         </div>
         <div className={styles.cardBody}>
           {exams.length === 0 ? (
-            <p style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>Nenhum exame registrado.</p>
+            <p className={styles.emptyState}>Nenhum exame registrado.</p>
           ) : (
             <table className={styles.examTable}>
               <thead>
@@ -163,7 +163,7 @@ export function CardView({ card, onRefresh }: CardViewProps) {
         </div>
         <div className={styles.cardBody}>
           {consultations.length === 0 ? (
-            <p style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>Nenhuma consulta registrada.</p>
+            <p className={styles.emptyState}>Nenhuma consulta registrada.</p>
           ) : (
             <table className={styles.consultTable}>
               <thead>
