@@ -106,17 +106,17 @@ export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>1ª Data</label>
             <input type="date" className={styles.input} value={applyDate1} onChange={(e) => setApplyDate1(e.target.value)} />
-            <button type="button" onClick={applyDate1ToAll} style={{ padding: '6px 8px', borderRadius: 6, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>Aplicar</button>
+            <button type="button" className={styles.applyButton} onClick={applyDate1ToAll}>Aplicar</button>
           </div>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>2ª Data</label>
             <input type="date" className={styles.input} value={applyDate2} onChange={(e) => setApplyDate2(e.target.value)} />
-            <button type="button" onClick={applyDate2ToAll} style={{ padding: '6px 8px', borderRadius: 6, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>Aplicar</button>
+            <button type="button" className={styles.applyButton} onClick={applyDate2ToAll}>Aplicar</button>
           </div>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>3ª Data</label>
             <input type="date" className={styles.input} value={applyDate3} onChange={(e) => setApplyDate3(e.target.value)} />
-            <button type="button" onClick={applyDate3ToAll} style={{ padding: '6px 8px', borderRadius: 6, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>Aplicar</button>
+            <button type="button" className={styles.applyButton} onClick={applyDate3ToAll}>Aplicar</button>
           </div>
         </div>
 
@@ -133,8 +133,28 @@ export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
             {EXAM_TYPES.map((type) => (
               <tr key={type}>
                 <td className={styles.examName}>{EXAM_LABELS[type]}</td>
-                {(['result1','date1','result2','date2','result3','date3'] as (keyof ExamRow)[]).map((field) => (
-                  <td key={field}>
+                {(['result1','date1'] as (keyof ExamRow)[]).map((field) => (
+                  <td key={field} className={styles.resultGroup}>
+                    <input
+                      className={styles.input}
+                      type={field.startsWith('date') ? 'date' : 'text'}
+                      value={rows[type][field]}
+                      onChange={(e) => set(type, field, e.target.value)}
+                    />
+                  </td>
+                ))}
+                {(['result2','date2'] as (keyof ExamRow)[]).map((field) => (
+                  <td key={field} className={styles.resultGroup}>
+                    <input
+                      className={styles.input}
+                      type={field.startsWith('date') ? 'date' : 'text'}
+                      value={rows[type][field]}
+                      onChange={(e) => set(type, field, e.target.value)}
+                    />
+                  </td>
+                ))}
+                {(['result3','date3'] as (keyof ExamRow)[]).map((field) => (
+                  <td key={field} className={styles.resultGroup}>
                     <input
                       className={styles.input}
                       type={field.startsWith('date') ? 'date' : 'text'}
