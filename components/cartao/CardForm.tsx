@@ -121,10 +121,9 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
             <div className={styles.sectionTitle}>Dados obstétricos</div>
             <div className={styles.grid}>
               <div className={styles.full}>
-                <label style={{ fontSize: '0.82rem', fontWeight: 500, color: 'var(--purple-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>PNAR — Procedência</label>
+                <label className={styles.fieldLabel}>PNAR — Procedência</label>
                 <textarea
                   className={styles.textarea}
-                  style={{ marginTop: '6px' }}
                   value={form.pnarPor}
                   onChange={(e) => set('pnarPor', e.target.value)}
                 />
@@ -134,7 +133,7 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
               <Input label="1ª USG" type="date" value={form.firstUsg} onChange={(e) => set('firstUsg', e.target.value)} />
               <div>
                 <Input label="IG (semanas)" type="number" value={form.igWeeks} readOnly />
-                {igDisplay && <div style={{ fontSize: '0.9rem', color: 'var(--gray)', marginTop: '6px' }}>{igDisplay}</div>}
+                {igDisplay && <div className={styles.subtleDisplay}>{igDisplay}</div>}
               </div>
             </div>
           </div>
@@ -159,10 +158,9 @@ export function CardForm({ patientId, card, onClose, onSave }: CardFormProps) {
                 { key: 'hf', label: 'HF — Hist. Familiar' },
               ].map(({ key, label }) => (
                 <div key={key} className={styles.full}>
-                  <label style={{ fontSize: '0.82rem', fontWeight: 500, color: 'var(--purple-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>{label}</label>
+                  <label className={styles.fieldLabel}>{label}</label>
                   <textarea
                     className={styles.textarea}
-                    style={{ marginTop: '6px' }}
                     value={form[key as keyof typeof form]}
                     onChange={(e) => set(key, e.target.value)}
                   />

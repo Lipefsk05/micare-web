@@ -27,10 +27,12 @@
   border: 1.5px solid var(--pink-border); border-radius: var(--radius-sm);
   background: var(--white); font-size: 0.9rem; color: var(--text-body);
   resize: vertical; min-height: 80px; outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s; margin-top: 6px;
 }
 .textarea:focus { border-color: var(--purple-mid); }
 .obsRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.fieldLabel { font-size: 0.82rem; font-weight: 500; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.03em; }
+.subtleDisplay { font-size: 0.9rem; color: var(--gray); margin-top: 6px; }
 .actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
 .error { color: #dc2626; font-size: 0.85rem; margin-bottom: 12px; }
 @keyframes slideUp { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
