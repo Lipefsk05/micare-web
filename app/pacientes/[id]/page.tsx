@@ -44,7 +44,7 @@ export default function PatientDetailPage() {
     return name.split(' ').map((n) => n[0]).slice(0, 2).join('').toUpperCase()
   }
 
-  if (loading) return <DashboardLayout><p style={{ color: 'var(--text-muted)' }}>Carregando...</p></DashboardLayout>
+  if (loading) return <DashboardLayout><p className={styles.loading}>Carregando...</p></DashboardLayout>
   if (!patient) return <DashboardLayout><p>Paciente não encontrada.</p></DashboardLayout>
 
   return (
@@ -81,7 +81,7 @@ export default function PatientDetailPage() {
             <div className={styles.noCard}>
               <div className={styles.noCardIcon}>♥</div>
               <p>Nenhum cartão de pré natal criado ainda.</p>
-              <Button style={{ marginTop: '16px' }} onClick={() => setShowCardForm(true)}>Criar cartão</Button>
+              <Button className="space-md" onClick={() => setShowCardForm(true)}>Criar cartão</Button>
             </div>
           )}
           {showCardForm && (
@@ -95,7 +95,7 @@ export default function PatientDetailPage() {
       )}
 
       {tab === 'dados' && (
-        <div style={{ background: 'var(--white)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--pink-mid)', padding: '32px' }}>
+        <div className={styles.dataContainer}>
           <DataRow label="Nome" value={patient.name} />
           <DataRow label="CPF" value={patient.cpf} />
           <DataRow label="Data de nascimento" value={new Date(patient.birthDate).toLocaleDateString('pt-BR')} />
@@ -109,10 +109,11 @@ export default function PatientDetailPage() {
 }
 
 function DataRow({ label, value }: { label: string; value: string }) {
+  const styles = require('./page.module.css')
   return (
-    <div style={{ display: 'flex', gap: '16px', padding: '12px 0', borderBottom: '1px solid var(--pink-light)' }}>
-      <span style={{ width: '200px', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)', fontWeight: 500 }}>{label}</span>
-      <span style={{ color: 'var(--text-body)' }}>{value}</span>
+    <div className={styles.dataRow}>
+      <span className={styles.dataLabel}>{label}</span>
+      <span className={styles.dataValue}>{value}</span>
     </div>
   )
 }
