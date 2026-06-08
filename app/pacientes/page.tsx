@@ -57,7 +57,7 @@ export default function PacientesPage() {
       </div>
 
       {loading ? (
-        <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '48px' }}>Carregando...</p>
+        <p className={styles.loading}>Carregando...</p>
       ) : patients.length === 0 ? (
         <div className={styles.empty}>
           <div className={styles.emptyIcon}>♀</div>
