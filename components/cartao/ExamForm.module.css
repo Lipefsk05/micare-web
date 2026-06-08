@@ -45,6 +45,9 @@
 }
 .applyButton:hover { background: var(--purple-deep); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 .applyButton:disabled { opacity: 0.6; cursor: not-allowed; }
+.applySection { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.applyGroup { display: flex; gap: 8px; align-items: center; }
+.applyLabel { font-size: 0.85rem; color: var(--purple-dark); white-space: nowrap; }
 .resultGroup { border-right: 2px solid var(--pink-light); padding-right: 12px; }
 .resultGroup:last-child { border-right: none; padding-right: 0; }
 @keyframes slideUp { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }

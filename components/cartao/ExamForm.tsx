@@ -102,19 +102,19 @@ export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
           <button className={styles.close} onClick={onClose}>✕</button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>1ª Data</label>
+        <div className={styles.applySection}>
+          <div className={styles.applyGroup}>
+            <label className={styles.applyLabel}>1ª Data</label>
             <input type="date" className={styles.input} value={applyDate1} onChange={(e) => setApplyDate1(e.target.value)} />
             <button type="button" className={styles.applyButton} onClick={applyDate1ToAll}>Aplicar</button>
           </div>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>2ª Data</label>
+          <div className={styles.applyGroup}>
+            <label className={styles.applyLabel}>2ª Data</label>
             <input type="date" className={styles.input} value={applyDate2} onChange={(e) => setApplyDate2(e.target.value)} />
             <button type="button" className={styles.applyButton} onClick={applyDate2ToAll}>Aplicar</button>
           </div>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>3ª Data</label>
+          <div className={styles.applyGroup}>
+            <label className={styles.applyLabel}>3ª Data</label>
             <input type="date" className={styles.input} value={applyDate3} onChange={(e) => setApplyDate3(e.target.value)} />
             <button type="button" className={styles.applyButton} onClick={applyDate3ToAll}>Aplicar</button>
           </div>
