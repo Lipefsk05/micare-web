@@ -52,7 +52,7 @@ export default function CartaoPublicoPage() {
     return (
       <div className={styles.page}>
         <div className={styles.container}>
-          <p style={{ textAlign: 'center', color: 'var(--text-muted)', paddingTop: '80px' }}>Carregando cartão...</p>
+          <p className={styles.loading}>Carregando cartão...</p>
         </div>
       </div>
     )
@@ -66,7 +66,7 @@ export default function CartaoPublicoPage() {
             <div className={styles.notFoundIcon}>♥</div>
             <h2 className={styles.notFoundTitle}>Cartão não encontrado</h2>
             <p className={styles.notFoundDesc}>Verifique os dados e tente novamente.</p>
-            <Link href="/" style={{ color: 'var(--purple-mid)', fontWeight: 500 }}>← Voltar para a busca</Link>
+            <Link href="/" className={styles.backLink}>← Voltar para a busca</Link>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@ export default function CartaoPublicoPage() {
         {!card ? (
           <div className={styles.card}>
             <div className={styles.cardBody}>
-              <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '24px', fontStyle: 'italic' }}>
+              <p className={styles.emptyState}>
                 Nenhum cartão de pré natal disponível ainda.
               </p>
             </div>
@@ -166,7 +166,7 @@ export default function CartaoPublicoPage() {
                       { label: 'HF', value: card.hf },
                     ].map(({ label, value }) => (
                       <div key={label}>
-                        <div className={styles.fieldLabel} style={{ marginBottom: 6 }}>{label}</div>
+                        <div className={styles.fieldLabelWithMargin}>{label}</div>
                         <div className={`${styles.textBlock} ${!value ? styles.textEmpty : ''}`}>
                           {value || 'Não informado'}
                         </div>
