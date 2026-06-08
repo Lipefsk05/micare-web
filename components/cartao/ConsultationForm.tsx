@@ -99,11 +99,10 @@ export function ConsultationForm({ cardId, consultation, nextNumber, onClose, on
             </div>
           </div>
 
-          <div className={styles.full} style={{ marginTop: 10 }}>
-            <label style={{ fontSize: '0.82rem', fontWeight: 500, color: 'var(--purple-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>Conduta</label>
+          <div className={`${styles.full} ${styles.section}`}>
+            <label className={styles.fieldLabel}>Conduta</label>
             <textarea
               className={styles.textarea}
-              style={{ marginTop: '6px' }}
               value={form.conduta}
               onChange={(e) => set('conduta', e.target.value)}
             />
