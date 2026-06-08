@@ -20,7 +20,9 @@ type ExamRow = {
 
 export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
   const [loading, setLoading] = useState(false)
-  const [applyDate, setApplyDate] = useState('')
+  const [applyDate1, setApplyDate1] = useState('')
+  const [applyDate2, setApplyDate2] = useState('')
+  const [applyDate3, setApplyDate3] = useState('')
 
   const initial: Record<string, ExamRow> = {}
   EXAM_TYPES.forEach((type) => {
@@ -62,12 +64,32 @@ export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
     }
   }
 
-  function applyToAllDates() {
-    if (!applyDate) return
+  function applyDate1ToAll() {
+    if (!applyDate1) return
     const updated: Record<string, ExamRow> = {}
     Object.keys(rows).forEach((type) => {
       const r = rows[type]
-      updated[type] = { ...r, date1: applyDate, date2: applyDate, date3: applyDate }
+      updated[type] = { ...r, date1: applyDate1 }
+    })
+    setRows(updated)
+  }
+
+  function applyDate2ToAll() {
+    if (!applyDate2) return
+    const updated: Record<string, ExamRow> = {}
+    Object.keys(rows).forEach((type) => {
+      const r = rows[type]
+      updated[type] = { ...r, date2: applyDate2 }
+    })
+    setRows(updated)
+  }
+
+  function applyDate3ToAll() {
+    if (!applyDate3) return
+    const updated: Record<string, ExamRow> = {}
+    Object.keys(rows).forEach((type) => {
+      const r = rows[type]
+      updated[type] = { ...r, date3: applyDate3 }
     })
     setRows(updated)
   }
@@ -80,10 +102,22 @@ export function ExamForm({ cardId, exams, onClose, onSave }: ExamFormProps) {
           <button className={styles.close} onClick={onClose}>✕</button>
         </div>
 
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
-          <label style={{ fontSize: '0.9rem', color: 'var(--purple-dark)' }}>Aplicar data em todos os exames</label>
-          <input type="date" className={styles.input} value={applyDate} onChange={(e) => setApplyDate(e.target.value)} />
-          <button type="button" className={styles.applyButton ?? ''} onClick={applyToAllDates} style={{ padding: '6px 10px', borderRadius: 6 }}>Aplicar</button>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>1ª Data</label>
+            <input type="date" className={styles.input} value={applyDate1} onChange={(e) => setApplyDate1(e.target.value)} />
+            <button type="button" onClick={applyDate1ToAll} style={{ padding: '6px 8px', borderRadius: 6, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>Aplicar</button>
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>2ª Data</label>
+            <input type="date" className={styles.input} value={applyDate2} onChange={(e) => setApplyDate2(e.target.value)} />
+            <button type="button" onClick={applyDate2ToAll} style={{ padding: '6px 8px', borderRadius: 6, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>Aplicar</button>
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <label style={{ fontSize: '0.85rem', color: 'var(--purple-dark)', whiteSpace: 'nowrap' }}>3ª Data</label>
+            <input type="date" className={styles.input} value={applyDate3} onChange={(e) => setApplyDate3(e.target.value)} />
+            <button type="button" onClick={applyDate3ToAll} style={{ padding: '6px 8px', borderRadius: 6, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>Aplicar</button>
+          </div>
         </div>
 
         <table className={styles.table}>
