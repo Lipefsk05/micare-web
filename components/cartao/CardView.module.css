@@ -1,78 +1,255 @@
-.wrapper { display: flex; flex-direction: column; gap: 20px; }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-.topBar { display: flex; justify-content: flex-end; gap: 10px; }
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
 
 .card {
-  background: var(--white); border-radius: var(--radius-lg);
-  border: 1px solid var(--pink-mid); overflow: hidden;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--pink-mid);
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
+
 .cardHeader {
   background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
-  color: white; padding: 20px 28px;
-  display: flex; align-items: center; justify-content: space-between;
+  color: white;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.cardTitle { font-size: 1.4rem; }
-.cardDoctor { font-size: 0.82rem; opacity: 0.8; margin-top: 2px; }
-.cardCreated { font-size: 0.82rem; opacity: 0.8; }
-.clinicalGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.fieldLabelWithMargin { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 6px; }
-.emptyState { color: var(--text-muted); font-style: italic; }
 
-.section { margin-bottom: 28px; }
+.cardTitle {
+  font-size: 1.4rem;
+}
+
+.cardDoctor {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.cardCreated {
+  font-size: 0.82rem;
+  opacity: 0.8;
+}
+
+.clinicalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fieldLabelWithMargin {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.emptyState {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.section {
+  /* padding: 28px; */
+  padding: 8px 12px;
+}
+
 .sectionTitle {
-  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--purple-mid); font-weight: 600; margin-bottom: 14px;
-  padding-bottom: 6px; border-bottom: 1px solid var(--pink-light);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--purple-mid);
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--pink-light);
 }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-.field { }
-.fieldLabel { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 2px; }
-.fieldValue { font-size: 0.95rem; color: var(--text-body); font-weight: 500; }
-.fieldEmpty { color: var(--text-muted); font-style: italic; font-weight: 400; }
 
-.obsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.obsItem { text-align: center; background: var(--pink-bg); border-radius: var(--radius-md); padding: 12px 8px; }
-.obsNum { font-size: 1.6rem; font-family: 'Cormorant Garamond', serif; color: var(--purple-dark); font-weight: 600; }
-.obsLabel { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
 
-.textBlock { background: var(--pink-bg); border-radius: var(--radius-md); padding: 14px 16px; font-size: 0.9rem; color: var(--text-body); white-space: pre-wrap; }
-.textEmpty { color: var(--text-muted); font-style: italic; }
+.fieldLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.fieldValue {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  font-weight: 500;
+}
+
+.fieldEmpty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.obsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.obsItem {
+  text-align: center;
+  background: var(--pink-bg);
+  border-radius: var(--radius-md);
+  padding: 12px 8px;
+}
+
+.obsNum {
+  font-size: 1.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--purple-dark);
+  font-weight: 600;
+}
+
+.obsLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.textBlock {
+  background: var(--pink-bg);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: var(--text-body);
+  white-space: pre-wrap;
+}
+
+.textEmpty {
+  color: var(--text-muted);
+  font-style: italic;
+}
 
 /* Tabela de exames */
-.examTable { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-.examTable th {
-  background: var(--pink-bg); color: var(--purple-dark);
-  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;
-  padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--pink-mid);
+.examTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
 }
-.examTable td { padding: 8px 12px; border-bottom: 1px solid var(--pink-light); }
-.examTable tr:last-child td { border-bottom: none; }
-.examTable tr:hover td { background: var(--pink-bg); }
-.examName { font-weight: 500; color: var(--purple-dark); }
-.examResult { color: var(--text-body); }
-.examDate { color: var(--text-muted); font-size: 0.78rem; }
-.examEmpty { color: var(--text-muted); font-style: italic; }
+
+.examTable th {
+  background: var(--pink-bg);
+  color: var(--purple-dark);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--pink-mid);
+}
+
+.examTable td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--pink-light);
+}
+
+.examTable tr:last-child td {
+  border-bottom: none;
+}
+
+.examTable tr:hover td {
+  background: var(--pink-bg);
+}
+
+.examName {
+  font-weight: 500;
+  color: var(--purple-dark);
+}
+
+.examResult {
+  color: var(--text-body);
+}
+
+.examDate {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.examEmpty {
+  color: var(--text-muted);
+  font-style: italic;
+}
 
 /* Tabela de consultas */
-.consultTable { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.consultTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
 .consultTable th {
-  background: var(--pink-bg); color: var(--purple-dark);
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
-  padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--pink-mid);
+  background: var(--pink-bg);
+  color: var(--purple-dark);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--pink-mid);
 }
-.consultTable td { padding: 8px 10px; border-bottom: 1px solid var(--pink-light); vertical-align: top; }
-.consultTable tr:last-child td { border-bottom: none; }
-.consultTable tr:hover td { background: var(--pink-bg); }
+
+.consultTable td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--pink-light);
+  vertical-align: top;
+}
+
+.consultTable tr:last-child td {
+  border-bottom: none;
+}
+
+.consultTable tr:hover td {
+  background: var(--pink-bg);
+}
+
 .consultNum {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--purple-light); color: white;
-  font-size: 0.75rem; font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--purple-light);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
+
 .editBtn {
-  background: none; border: 1px solid var(--pink-border);
-  border-radius: var(--radius-sm); padding: 3px 10px;
-  font-size: 0.75rem; color: var(--text-muted); transition: all 0.15s;
+  background: none;
+  border: 1px solid var(--pink-border);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: all 0.15s;
 }
-.editBtn:hover { background: var(--pink-light); color: var(--purple-dark); }
+
+.editBtn:hover {
+  background: var(--pink-light);
+  color: var(--purple-dark);
+}
