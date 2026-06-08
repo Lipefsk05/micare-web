@@ -43,6 +43,35 @@ a { color: inherit; text-decoration: none; }
 input, textarea, select, button { font-family: 'DM Sans', sans-serif; }
 button { cursor: pointer; }
 
+/* Common typography patterns */
+.label-uppercase {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--purple-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.subtle-text {
+  font-size: 0.82rem;
+  opacity: 0.8;
+}
+
+.link-secondary {
+  color: var(--purple-mid);
+  font-weight: 500;
+}
+
+/* Common spacing */
+.space-xs { margin-top: 6px; }
+.space-sm { margin-top: 10px; }
+.space-md { margin-top: 16px; }
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--pink-light); }
 ::-webkit-scrollbar-thumb { background: var(--purple-light); border-radius: 3px; }
